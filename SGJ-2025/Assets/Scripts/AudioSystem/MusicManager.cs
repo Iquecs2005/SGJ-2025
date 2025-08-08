@@ -15,7 +15,7 @@ public class MusicManager : MonoBehaviour
     private static bool fadingIn;
     private static bool fadingOut;
 
-    private float timeElapsed = 0;
+    private static float timeElapsed = 0;
     [SerializeField]
     private float fadeInTime = 1;
     [SerializeField]
@@ -51,14 +51,21 @@ public class MusicManager : MonoBehaviour
 
     private static void SetAudioSource(MusicGroup desiredMusic, bool setAudio)
     {
-        musicSource.clip = desiredMusic.musicClip;
-
-        if (setAudio)
+        if (desiredMusic != null) 
         {
-            musicSource.volume = desiredMusic.volume;
-        }
+            musicSource.clip = desiredMusic.musicClip;
 
-        musicSource.Play();
+            if (setAudio)
+            {
+                musicSource.volume = desiredMusic.volume;
+            }
+
+            musicSource.Play();
+        }
+        else 
+        {
+            musicSource.clip = null;
+        }
 
         currentMusic = desiredMusic;
     }
@@ -66,6 +73,10 @@ public class MusicManager : MonoBehaviour
     public static void PlayMusic(string musicName) 
     {
         if (currentMusic != null && musicName == currentMusic.musicName) return;
+
+        fading = false;
+        fadingIn = false;
+        fadingOut = false;
 
         SetAudioSource(musicLibrary.GetMusicClip(musicName), true);
     }
@@ -86,7 +97,32 @@ public class MusicManager : MonoBehaviour
         }
         else 
         {
+            if (fadingIn) 
+            {
+                fadingIn = false;
+                timeElapsed = 0;
+                currentMusic.volume = musicSource.volume;
+            }
             fadingOut = true;
+        }
+    }
+
+    public static void StartFadeOut() 
+    {
+        if (currentMusic == null) return;
+
+        desiredFadeInMusic = null;
+
+        if (fadingOut) return;
+
+        fading = true;
+        fadingOut = true;
+        timeElapsed = 0;
+
+        if (fadingIn) 
+        {
+            fadingIn = false;
+            currentMusic.volume = musicSource.volume;
         }
     }
 
@@ -100,11 +136,15 @@ public class MusicManager : MonoBehaviour
         if (ratio >= 1)
         {
             fadingOut = false;
-            fadingIn = true;
 
-            timeElapsed = 0;
+            if (desiredFadeInMusic != null) 
+            {
+                fadingIn = true;
+            }
 
             SetAudioSource(desiredFadeInMusic, false);
+            timeElapsed = 0;
+
         }
     }
 

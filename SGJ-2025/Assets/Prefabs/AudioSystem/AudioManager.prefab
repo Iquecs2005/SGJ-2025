@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c360c81f7af18b4c800fcc8db37720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeInTime: 5
+  fadeOutTime: 5
 --- !u!114 &6498058853043605916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,10 +63,10 @@ MonoBehaviour:
   musicList:
   - musicName: Test1
     musicClip: {fileID: 8300000, guid: 57099e7c6ab52f745bd59f787d10f401, type: 3}
-    volume: 1
+    volume: 0.5
   - musicName: Test2
     musicClip: {fileID: 8300000, guid: b4968f0475141124cbc7b316d42037e2, type: 3}
-    volume: 1
+    volume: 0.5
 --- !u!82 &516622344381240214
 AudioSource:
   m_ObjectHideFlags: 0

@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaySoundScript : MonoBehaviour
+public class PlayFadeInOut : MonoBehaviour
 {
     [SerializeField] private string audioName;
 
-    public void PlayAudio() 
+    public void PlayAudio()
     {
-        SFXManager.PlaySFX(audioName, new Vector3(0,0,0));
+        MusicManager.FadeInMusic(audioName);
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 public class MusicLibrary : MonoBehaviour
 {
     [SerializeField] private MusicGroup[] musicList;
-    private Dictionary<string, MusicData> musicDictionary;
+    private Dictionary<string, MusicGroup> musicDictionary;
 
     private void OnValidate()
     {
@@ -15,33 +15,17 @@ public class MusicLibrary : MonoBehaviour
 
     public void InitializeDictionary() 
     {
-        musicDictionary = new Dictionary<string, MusicData>();
+        musicDictionary = new Dictionary<string, MusicGroup>();
         foreach (MusicGroup musicGroup in musicList) 
         {
-            MusicData musicData = new MusicData();
-
-            musicData.musicClip = musicGroup.musicClip;
-            musicData.volume = musicGroup.volume;
-
-            musicDictionary[musicGroup.musicName] = musicData;
+            musicDictionary[musicGroup.musicName] = musicGroup;
         }
     }
 
-    public AudioClip GetMusicClip(string musicName, ref float volume) 
+    public MusicGroup GetMusicClip(string musicName) 
     {
-        MusicData musicData = musicDictionary[musicName];
-
-        volume = musicData.volume;
-
-        return musicData.musicClip;
+        return musicDictionary[musicName];
     }
-}
-
-public class MusicData 
-{
-    public AudioClip musicClip;
-    [Range(0, 1)]
-    public float volume;
 }
 
 [Serializable]

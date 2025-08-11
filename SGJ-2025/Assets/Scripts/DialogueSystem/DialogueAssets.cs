@@ -7,4 +7,5 @@ public class DialogueAssets : ScriptableObject
 {
     [TextArea]
     public string[] dialogue;
+    // public AudioClip[] sound;
 }

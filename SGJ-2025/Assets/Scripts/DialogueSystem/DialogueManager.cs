@@ -7,11 +7,12 @@ public class DialogueManager : MonoBehaviour
 {
     [SerializeField] GameObject dialoguePanel;
     [SerializeField] TMP_Text dialogueTxt;
-    public float tempoEntreLetras;
-    public float tempoEntreFalas;
+    public float tempoEntreLetras = 0.05f;
+    public float tempoEntreFalas = 1f;
 
-    private DialogueAssets dialogue;
+    private DialogueAssets currentDialogue;
     private int currentIndex;
+
     [HideInInspector] public static DialogueManager instance { get; private set; }
 
 
@@ -31,9 +32,11 @@ public class DialogueManager : MonoBehaviour
     {
         StopAllCoroutines();
         dialoguePanel.SetActive(true);
-        StartCoroutine(ShowDialogueLines(dialogueData.dialogue));
 
+        currentDialogue = dialogueData;
         currentIndex = 0;
+
+        StartCoroutine(ShowDialogueLines(dialogueData.dialogue, currentIndex));
     }
 
     public void EndDialogue()
@@ -50,23 +53,27 @@ public class DialogueManager : MonoBehaviour
         {
             textBuffer += c;
             dialogueTxt.text = textBuffer;
-            yield return new WaitForSeconds(1 / tempoEntreLetras);
+            yield return new WaitForSeconds(tempoEntreLetras);
         }
     }
 
-    IEnumerator ShowDialogueLines(string[] lines)
+    IEnumerator ShowDialogueLines(string[] lines, int startIndex)
     {
-        foreach (string line in lines)
+        for (int i = startIndex; i < lines.Length; i++)
         {
-            yield return StartCoroutine(SpeedText(line));
+            // SFXManager.PlaySFX(name, soundPosition);
+
+            yield return StartCoroutine(SpeedText(lines[i]));
             yield return new WaitForSeconds(tempoEntreFalas);
 
             currentIndex++;
         }
+
         EndDialogue();
+
     }
 
-    public int PauseDialogue(DialogueAssets dialogueData)
+    public int PauseDialogue()
     {
         EndDialogue();
         return currentIndex;
@@ -76,6 +83,20 @@ public class DialogueManager : MonoBehaviour
     {
         StopAllCoroutines();
         dialoguePanel.SetActive(true);
-        // StartCoroutine(ShowDialogueLines());
+
+        currentDialogue = dialogueData;
+        currentIndex = desiredIndex;
+
+        StartCoroutine(ShowDialogueLines(currentDialogue.dialogue, currentIndex));
+    }
+
+    public void PauseDialogueButton()
+    {
+        PauseDialogue();
+    }
+
+    public void ResumeDialogueButton()
+    {
+        ResumeDialogue(currentDialogue, currentIndex);
     }
 }

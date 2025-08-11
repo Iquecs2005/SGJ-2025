@@ -21,8 +21,6 @@ public class QuantumLockedBehaviour : MonoBehaviour
     {
         float randomValue = Random.Range(0f, 100f);
 
-        print(currentProbability);
-
         if (randomValue < currentProbability) 
         {
             SwapState();

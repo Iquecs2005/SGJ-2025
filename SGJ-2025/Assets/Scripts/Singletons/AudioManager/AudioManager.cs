@@ -12,7 +12,11 @@ public class AudioManager : MonoBehaviour
     {
         if (instance != null && instance != this) 
         {
-            Destroy(gameObject);
+            sfxManager = GetComponentInChildren<SFXManager>();
+            Destroy(sfxManager.gameObject);
+            musicManager = GetComponentInChildren<MusicManager>();
+            Destroy(musicManager.gameObject);
+            Destroy(this);
         }
         else 
         {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "ScriptableOject", menuName = "Dialogue/New Dialogue")]
 public class DialogueAssets : ScriptableObject
 {
     [TextArea]

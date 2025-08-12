@@ -26,10 +26,14 @@ public class SFXManager : MonoBehaviour
     //    PlaySFX(sfxName, audioListenerObject.transform.position, );
     //}
 
-    public static void PlaySFX(string sfxName, Vector2 soundPos, Transform parent = null)
+    public static GameObject PlaySFX(string sfxName, Vector2 soundPos, Transform parent = null)
     {
         float volume = 0;
         float pitchModifier = 0;
+
+        AudioClip randomClip = sfxLibrary.GetClipRandomVariation(sfxName, ref volume, ref pitchModifier);
+
+        if (randomClip == null) return null;
 
         GameObject SourceObj;
         SourceObj = Instantiate(instance.sfxSourceObj, soundPos, Quaternion.identity, parent);
@@ -41,5 +45,7 @@ public class SFXManager : MonoBehaviour
         audioSource.pitch = pitchModifier;
 
         audioSource.Play();
+
+        return SourceObj;
     }
 }

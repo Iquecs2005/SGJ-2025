@@ -5,16 +5,21 @@ using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
+    [HideInInspector] public static DialogueManager instance { get; private set; }
+
     [SerializeField] GameObject dialoguePanel;
     [SerializeField] TMP_Text dialogueTxt;
     public float tempoEntreLetras = 0.05f;
     public float tempoEntreFalas = 1f;
 
-    private DialogueAssets currentDialogue;
+    private DialogueAsset currentDialogue;
+    private DialogueLine currentLine;
     private int currentIndex;
+    private Vector2 currentSpeakerPosition;
+    private GameObject soundSourceObject = null;
 
-    [HideInInspector] public static DialogueManager instance { get; private set; }
-
+    private List<QueueElement> dialogQueue;
+    private bool OnDialog = false;
 
     private void Awake()
     {
@@ -28,28 +33,44 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue(DialogueAssets dialogueData)
+    public void StartDialogue(DialogueAsset dialogueData, Vector2 speakerPos, int StartIndex = 0)
     {
-        StopAllCoroutines();
+        if (OnDialog) return;
+
+        OnDialog = true;
         dialoguePanel.SetActive(true);
 
         currentDialogue = dialogueData;
-        currentIndex = 0;
+        currentIndex = StartIndex;
+        currentSpeakerPosition = speakerPos;
 
-        StartCoroutine(ShowDialogueLines(dialogueData.dialogue, currentIndex));
+        StartCoroutine(ShowDialogueLines());
     }
 
-    public void EndDialogue()
+    private IEnumerator ShowDialogueLines()
     {
-        StopAllCoroutines();
-        dialoguePanel.SetActive(false);
-        dialogueTxt.text = null;
+        DialogueLine[] dialogueLines = currentDialogue.dialogueData;
+
+        while (currentIndex < dialogueLines.Length)
+        {
+            currentLine = dialogueLines[currentIndex];
+
+            if (currentLine.textSoundName != null)
+                soundSourceObject = SFXManager.PlaySFX(currentLine.textSoundName, currentSpeakerPosition);
+
+            yield return StartCoroutine(SpeedText());
+            yield return new WaitForSeconds(tempoEntreFalas);
+
+            currentIndex++;
+        }
+
+        OnDialogueEnd();
     }
 
-    IEnumerator SpeedText(string line)
+    private IEnumerator SpeedText()
     {
         string textBuffer = null;
-        foreach (char c in line)
+        foreach (char c in currentLine.lineText)
         {
             textBuffer += c;
             dialogueTxt.text = textBuffer;
@@ -57,46 +78,44 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    IEnumerator ShowDialogueLines(string[] lines, int startIndex)
+    private void OnDialogueEnd()
     {
-        for (int i = startIndex; i < lines.Length; i++)
-        {
-            // SFXManager.PlaySFX(name, soundPosition);
-
-            yield return StartCoroutine(SpeedText(lines[i]));
-            yield return new WaitForSeconds(tempoEntreFalas);
-
-            currentIndex++;
-        }
-
-        EndDialogue();
-
+        dialoguePanel.SetActive(false);
+        soundSourceObject = null;
+        dialogueTxt.text = null;
+        currentDialogue = null;
+        currentIndex = 0;
+        currentSpeakerPosition = Vector2.zero;
+        OnDialog = false;
     }
 
-    public int PauseDialogue()
-    {
-        EndDialogue();
-        return currentIndex;
-    }
-
-    public void ResumeDialogue(DialogueAssets dialogueData, int desiredIndex)
+    public void EndDialog() 
     {
         StopAllCoroutines();
-        dialoguePanel.SetActive(true);
-
-        currentDialogue = dialogueData;
-        currentIndex = desiredIndex;
-
-        StartCoroutine(ShowDialogueLines(currentDialogue.dialogue, currentIndex));
+        OnDialogueEnd();
     }
 
-    public void PauseDialogueButton()
+    public void PauseDialogue()
     {
-        PauseDialogue();
+        StopAllCoroutines();
+
+        if (soundSourceObject != null) 
+        {
+            Destroy(soundSourceObject);
+        }
+        dialoguePanel.SetActive(false);
+        dialogueTxt.text = null;
+        OnDialog = false;
     }
 
-    public void ResumeDialogueButton()
+    public void ResumeDialogue()
     {
-        ResumeDialogue(currentDialogue, currentIndex);
+        StartDialogue(currentDialogue, currentSpeakerPosition, currentIndex);
+    }
+
+    private struct QueueElement 
+    {
+        public DialogueAsset dialogAsset;
+        public Vector2 speakerPosition;
     }
 }

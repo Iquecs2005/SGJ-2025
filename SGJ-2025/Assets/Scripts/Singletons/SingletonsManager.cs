@@ -13,7 +13,7 @@ public class SingletonsManager : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         MonoBehaviour[] scripts = GetComponents<MonoBehaviour>();
-        print(scripts.Length);
+        
         if (scripts.Length == 1)
         {
             Destroy(gameObject);

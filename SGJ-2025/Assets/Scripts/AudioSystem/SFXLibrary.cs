@@ -24,7 +24,15 @@ public class SFXLibrary : MonoBehaviour
 
     public AudioClip GetClipRandomVariation(string clipName, ref float volume, ref float pitchModifier) 
     {
-        List<SFXData> currentSFXGroup = SFXDictionary[clipName];
+        List<SFXData> currentSFXGroup;
+
+        SFXDictionary.TryGetValue(clipName, out currentSFXGroup);
+        if (currentSFXGroup == null) 
+        {
+            print($"No audio with name {clipName}");
+            return null;
+        }
+
         if (currentSFXGroup.Count > 0) 
         {
             int randomClipNumber = UnityEngine.Random.Range(0, currentSFXGroup.Count);

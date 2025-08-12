@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 6735519699533530894}
   - component: {fileID: 6772651998496017523}
   - component: {fileID: 1883841858049366925}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LightRadiusTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

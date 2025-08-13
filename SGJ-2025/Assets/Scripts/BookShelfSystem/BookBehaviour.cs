@@ -2,10 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum BookDirection
+{
+    none,
+    dir,
+    esq
+}
+
 public class BookBehaviour : MonoBehaviour
 {
+    [Header("Prefabs")]
+    [SerializeField] GameObject desireBook;
+
+
+    [Header("Book Direction")]
+    public BookDirection bookDirection;
+
+
+    [Header("Private Parameters")]
     private Collider2D bookCollider;
     private Vector3 startDragPos;
+
+
+    [Header("Test")]
+    [SerializeField] bool bookCheck;
+
 
     private void Start()
     {

@@ -4,9 +4,18 @@ using UnityEngine;
 
 public class DropArea : MonoBehaviour, IBookDropArea
 {
+    public BookBehaviour bookBehaviour;
+
+    [SerializeField] DropArea left;
+    [SerializeField] DropArea right;
+
+    void Start()
+    {
+        bookBehaviour = gameObject.GetComponent<BookBehaviour>();
+    }
+
     public void OnBookDrop(BookBehaviour book)
     {
         book.transform.position = transform.position;
-        print("Livro dropado aqui!");
     }
 }

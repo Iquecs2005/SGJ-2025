@@ -228,6 +228,18 @@ MonoBehaviour:
       volume: 1
       minPitchShift: 0.95
       maxPitchShift: 1.05
+  - SFXName: Test2
+    SFXVariations:
+    - audioClip: {fileID: 8300000, guid: 0700316f4cd1691449e7c0561bc41ba3, type: 3}
+      volume: 1
+      minPitchShift: 0.95
+      maxPitchShift: 1.05
+  - SFXName: Test3
+    SFXVariations:
+    - audioClip: {fileID: 8300000, guid: c843a9986df16b8459f36231356a3b68, type: 3}
+      volume: 1
+      minPitchShift: 0.95
+      maxPitchShift: 1.05
 --- !u!1 &2505871194916236169
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc9b732188aaa894d8348ff9c12dc2d7, type: 3}
-  m_Name: test
+  m_Name: Test2
   m_EditorClassIdentifier: 
-  itemName: Zap
-  description: muito zap mesmo
-  icon: {fileID: 21300000, guid: 6cafc0c8f450fef41b0bed0a15fddaa1, type: 3}
+  id: 2
+  icon: {fileID: 21300000, guid: f3bf489fd19277b4b90dce66e1994226, type: 3}
+  prefab: {fileID: 0}
+  description: 

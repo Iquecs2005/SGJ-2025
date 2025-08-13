@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueData:
   - lineText: Giovanna, o lito enloqueceu
-    textSoundName: 
+    textSoundName: Test1
   - lineText: Ta fumando muita maconha
-    textSoundName: 
+    textSoundName: Test2
   - lineText: Nao sei mais oque fazer
-    textSoundName: 
+    textSoundName: Test3

@@ -19,6 +19,7 @@ public class QuantumLockedBehaviour : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        print("a");
         float randomValue = Random.Range(0f, 100f);
 
         if (randomValue < currentProbability) 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RoomController : MonoBehaviour
 {
-    [SerializeField] private GameObject[] rooms;
+    [SerializeField] private Room[] rooms;
     [SerializeField] private GameObject cameraObject;
     
     private int currentRoom;
@@ -21,8 +21,7 @@ public class RoomController : MonoBehaviour
 
         for (int i = 0; i < rooms.Length; i++)
         {
-            GameObject room = rooms[i];
-            roomsSize[i] = room.GetComponent<SpriteRenderer>().bounds.size.x;
+            roomsSize[i] = rooms[i].roomSprite.bounds.size.x;
         }
 
         currentRoom = GetCurrentRoom();
@@ -51,13 +50,14 @@ public class RoomController : MonoBehaviour
     {
         for (int i = currentRoom - 1; i >= 0; i--)
         {
-            float roomNewXPos = rooms[i + 1].transform.position.x - DistanceBetweenRooms(i, i + 1);
-            rooms[i].transform.position = new Vector2(roomNewXPos, 0);
+
+            float roomNewXPos = rooms[i + 1].roomGameobject.transform.position.x - DistanceBetweenRooms(i, i + 1);
+            rooms[i].roomGameobject.transform.position = new Vector2(roomNewXPos, 0);
         }
         for (int i = currentRoom + 1; i < rooms.Length; i++)
         {
-            float roomNewXPos = rooms[i - 1].transform.position.x + DistanceBetweenRooms(i, i - 1);
-            rooms[i].transform.position = new Vector2(roomNewXPos, 0);
+            float roomNewXPos = rooms[i - 1].roomGameobject.transform.position.x + DistanceBetweenRooms(i, i - 1);
+            rooms[i].roomGameobject.transform.position = new Vector2(roomNewXPos, 0);
         }
     }
 
@@ -65,7 +65,7 @@ public class RoomController : MonoBehaviour
     {
         for (int i = 0; i < rooms.Length; i++)
         {
-            GameObject room = rooms[i];
+            GameObject room = rooms[i].roomGameobject;
 
             float roomLeftBound = room.transform.position.x - roomsSize[i] / 2;
             float roomRightBound = room.transform.position.x + roomsSize[i] / 2;
@@ -80,8 +80,8 @@ public class RoomController : MonoBehaviour
 
     private void MoveRoomLeft() 
     {
-        GameObject rightRoom = rooms[rightMostRoom];
-        GameObject leftRoom = rooms[leftMostRoom];
+        GameObject rightRoom = rooms[rightMostRoom].roomGameobject;
+        GameObject leftRoom = rooms[leftMostRoom].roomGameobject;
 
         float roomNewXPosition = leftRoom.transform.position.x - DistanceBetweenRooms(leftMostRoom, rightMostRoom);
 
@@ -98,8 +98,8 @@ public class RoomController : MonoBehaviour
 
     private void MoveRoomRight()
     {
-        GameObject rightRoom = rooms[rightMostRoom];
-        GameObject leftRoom = rooms[leftMostRoom];
+        GameObject rightRoom = rooms[rightMostRoom].roomGameobject;
+        GameObject leftRoom = rooms[leftMostRoom].roomGameobject;
 
         float roomNewXPosition = rightRoom.transform.position.x + DistanceBetweenRooms(rightMostRoom, leftMostRoom);
 
@@ -108,4 +108,11 @@ public class RoomController : MonoBehaviour
         rightMostRoom = leftMostRoom;
         leftMostRoom = (leftMostRoom + 1) % rooms.Length;
     }
+}
+
+[System.Serializable]
+public class Room 
+{
+    public GameObject roomGameobject;
+    public SpriteRenderer roomSprite;
 }

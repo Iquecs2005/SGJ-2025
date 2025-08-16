@@ -92,12 +92,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e934c0efca79c54883ddbb3d3bd495d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  desireBook: {fileID: 0}
-  bookDirection: 0
   bookDropLayer:
     serializedVersion: 2
     m_Bits: 256
-  bookCheck: 0
+  currentDropArea: {fileID: 0}
 --- !u!114 &5048482085052698871
 MonoBehaviour:
   m_ObjectHideFlags: 0

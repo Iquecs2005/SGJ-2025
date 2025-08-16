@@ -16,7 +16,7 @@ public class BookShelfManager : MonoBehaviour
     [Header("Events")]
     [SerializeField] private UnityEvent OnCorrectBooks;
 
-    private void Start()
+    private void Awake()
     {
         for (int i = 0; i < dropAreaMatrix.Length; i++)
         {
@@ -37,6 +37,8 @@ public class BookShelfManager : MonoBehaviour
 
             if (dropAreaMatrix[bookColumn].books[bookRow + 1].bookBehaviour == correctRightBook)
             {
+                correctLeftBook.SetMovement(false);
+                correctRightBook.SetMovement(false);
                 OnCorrectBooks.Invoke();
             }
 
@@ -47,6 +49,8 @@ public class BookShelfManager : MonoBehaviour
 
             if (dropAreaMatrix[bookColumn].books[bookRow - 1].bookBehaviour == correctLeftBook) 
             {
+                correctLeftBook.SetMovement(false);
+                correctRightBook.SetMovement(false);
                 OnCorrectBooks.Invoke();
             }
         }

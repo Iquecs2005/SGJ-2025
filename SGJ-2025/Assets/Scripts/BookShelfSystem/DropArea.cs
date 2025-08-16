@@ -15,13 +15,9 @@ public class DropArea : MonoBehaviour, IBookDropArea
     private int rowIndex;
     private int columnIndex;
 
-    void Start()
-    {
-        dropAreaCollider = GetComponent<Collider2D>();
-    }
-
     public void SaveMatrixPos(BookShelfManager shelf, int row, int collumn) 
     {
+        dropAreaCollider = GetComponent<Collider2D>();
         shelfManager = shelf;
         rowIndex = row;
         columnIndex = collumn;

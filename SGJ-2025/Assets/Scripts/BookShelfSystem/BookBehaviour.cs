@@ -3,45 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public enum BookDirection
-{
-    none,
-    dir,
-    esq
-}
-
 public class BookBehaviour : MonoBehaviour
 {
     //Haykou, se voce está lendo esse codigo para aprender algo, não
     //Va ler outra coisa, o que eu fiz aqui ta uma bosta
 
-    [Header("Prefabs")]
-    [SerializeField] GameObject desireBook;
-
-
-    [Header("Book Direction")]
-    public BookDirection bookDirection;
-
     [Header("Private Parameters")]
     [SerializeField] private LayerMask bookDropLayer;
-    private Collider2D bookCollider;
+    [SerializeField] private DropArea currentDropArea;
     private Vector3 startDragPos;
     private Vector3 cursorOffset;
-    private DropArea currentDropArea;
     private bool beingDragged;
-
-
-    [Header("Test")]
-    [SerializeField] bool bookCheck;
-
+    private bool canMove = true;
 
     private void Start()
     {
-        bookCollider = GetComponent<Collider2D>();
+        if (currentDropArea != null) 
+        {
+            currentDropArea.OnBookDrop(this);
+        }
     }
 
     private void OnMouseDown()
     {
+        if (!canMove) return;
+
         beingDragged = true;
         startDragPos = transform.position;
         cursorOffset = transform.position - GetMousePositionInWorldSpace();
@@ -83,5 +69,10 @@ public class BookBehaviour : MonoBehaviour
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0f;
         return mousePosition;
+    }
+
+    public void SetMovement(bool value) 
+    {
+        canMove = value;
     }
 }

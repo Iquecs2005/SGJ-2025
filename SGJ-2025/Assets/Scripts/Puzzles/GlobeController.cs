@@ -42,7 +42,7 @@ public class GlobeController : MonoBehaviour
             if (currentIndex == correctButtonOrder.Length) 
             {
                 currentIndex = 0;
-                print("Correct Combination");
+                OnCorrectSolution.Invoke();
             }
         }
         else 

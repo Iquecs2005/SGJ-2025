@@ -37,11 +37,15 @@ public class BookBehaviour : MonoBehaviour
 
     private void OnMouseDrag()
     {
+        if (!canMove) return;
+
         transform.position = GetMousePositionInWorldSpace() + cursorOffset;
     }
 
     public void OnBookDrop(InputAction.CallbackContext context)
     {
+        if (!canMove) return;
+
         if (context.canceled) 
         {
             if (!beingDragged) return;

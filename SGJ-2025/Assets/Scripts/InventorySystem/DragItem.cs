@@ -10,7 +10,7 @@ public class DragItem : MonoBehaviour
     private PlayerInputController inputController;
     private InventoryAssets currentItem;
 
-    private ItemInteraction currentItemInteraction;
+    private ItemInteraction[] currentItemInteraction;
 
 
     public void Awake()
@@ -24,7 +24,10 @@ public class DragItem : MonoBehaviour
     {
         if (currentItemInteraction != null) 
         {
-            currentItemInteraction.OnItemInteraction(currentItem);
+            foreach (ItemInteraction itemInteraction in currentItemInteraction) 
+            {
+                    itemInteraction.OnItemInteraction(currentItem);
+            }
         }
         gameObject.SetActive(false);
     }
@@ -40,7 +43,7 @@ public class DragItem : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         spriteRenderer.color = new Color(255, 255, 255, 1);
-        currentItemInteraction = collision.gameObject.GetComponent<ItemInteraction>();
+        currentItemInteraction = collision.gameObject.GetComponents<ItemInteraction>();
     }
 
     private void OnTriggerExit2D(Collider2D collision)

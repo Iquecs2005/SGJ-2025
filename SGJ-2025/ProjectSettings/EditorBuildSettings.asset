@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/CenasDoHaykal/TestA.unity
-    guid: 00b2df39495c6214e9de8aaab28dc479
+    path: Assets/Scenes/MainMenu.unity
+    guid: ccb97d88b7264ef48914dd9f7c10e490
   - enabled: 1
-    path: Assets/Scenes/CenasDoHaykal/TestB.unity
-    guid: 63285d1f2747b6d4587733215f44a0a4
+    path: Assets/Scenes/GameScene.unity
+    guid: 8b67ce3ad4e683643b816437a52efa73
+  - enabled: 1
+    path: Assets/Scenes/WinScreen.unity
+    guid: 2ef37938587780e40a1c67ae3067cdfa
   m_configObjects: {}

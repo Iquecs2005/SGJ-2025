@@ -271,14 +271,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCursor
       objectReference: {fileID: 0}
-    - target: {fileID: 5105710517655321331, guid: 17f82db464b831144994cb62516c396d, type: 3}
-      propertyPath: OnInventoryChange.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5105710517655321331, guid: 17f82db464b831144994cb62516c396d, type: 3}
-      propertyPath: OnInventoryChange.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5527765819366024467, guid: 17f82db464b831144994cb62516c396d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -522,6 +514,14 @@ PrefabInstance:
     - target: {fileID: 1591272892789496004, guid: f2e04f3979868d74aa4f183947b6229e, type: 3}
       propertyPath: m_Name
       value: InventoryCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1591272892789496004, guid: f2e04f3979868d74aa4f183947b6229e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062719358601906970, guid: f2e04f3979868d74aa4f183947b6229e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2518282614135159173, guid: f2e04f3979868d74aa4f183947b6229e, type: 3}
       propertyPath: m_Pivot.x

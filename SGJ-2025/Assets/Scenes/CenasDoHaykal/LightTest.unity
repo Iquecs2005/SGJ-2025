@@ -535,7 +535,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &472870335
 RectTransform:
   m_ObjectHideFlags: 0
@@ -662,7 +662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 430720c2abb1d6f40aa0b0cad5d5d107, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activatedDialogue: {fileID: 0}
+  activatedDialogue: {fileID: 11400000, guid: 83444e9cbf4675e46b6c5d75db98973d, type: 2}
   speakerPos: {fileID: 0}
 --- !u!1001 &741640808
 PrefabInstance:
@@ -1529,7 +1529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1597612520
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1777,8 +1777,8 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
+  m_enableVertexGradient: 1
+  m_colorMode: 0
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
     topRight: {r: 1, g: 1, b: 1, a: 1}
@@ -2239,8 +2239,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialoguePanel: {fileID: 901425398}
   dialogueTxt: {fileID: 1622732689}
-  tempoEntreLetras: 0.1
+  tempoEntreLetras: 0
   tempoEntreFalas: 1.5
+  tempoFadeIn: 0.225
+  tempoFadeOut: 0.5
+  offsetLetraY: -10
 --- !u!1001 &2822144356126643451
 PrefabInstance:
   m_ObjectHideFlags: 0

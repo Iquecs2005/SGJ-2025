@@ -288,7 +288,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3727464033825442676}
   - component: {fileID: 2973853264165166955}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CameraFollow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,6 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followTarget: {fileID: 0}
+  lowerBoundary: 250
 --- !u!1 &8870856607474534694
 GameObject:
   m_ObjectHideFlags: 0

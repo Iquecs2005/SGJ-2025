@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: DoorKey
   m_EditorClassIdentifier: 
   id: doorkey
-  icon: {fileID: 21300000, guid: 92897c68b769aca4ea98f6ca8b88e818, type: 3}
+  icon: {fileID: 1789041002, guid: 92897c68b769aca4ea98f6ca8b88e818, type: 3}
   prefab: {fileID: 0}
   description: 

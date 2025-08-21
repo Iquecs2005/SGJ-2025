@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
     private GameObject playerCursorObj;
+    private GameObject cameraCursorObj;
 
     private void Awake()
     {
@@ -27,5 +28,14 @@ public class GameManager : MonoBehaviour
             playerCursorObj = GameObject.FindGameObjectWithTag("Player");
         }
         return playerCursorObj;
+    }
+
+    public GameObject GetCameraRef()
+    {
+        if (cameraCursorObj == null)
+        {
+            cameraCursorObj = GameObject.FindGameObjectWithTag("CameraController");
+        }
+        return cameraCursorObj;
     }
 }

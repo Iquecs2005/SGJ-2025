@@ -74,8 +74,7 @@ public class InventoryUI : MonoBehaviour
             InventoryAssets currentItem = inventoryItems[i];
             GameObject currentSlot = itemSlots[i];
 
-            currentSlot.GetComponent<Image>().sprite = currentItem.icon;
-            currentSlot.GetComponent<InventorySlot>().Initialization(this, i);
+            currentSlot.GetComponent<InventorySlot>().Initialization(this, i, currentItem.icon);
         }
     }
 

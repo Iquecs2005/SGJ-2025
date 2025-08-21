@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c301b2c4a27daa45801ad0aba24b12b, type: 3}
+  m_Name: 3
+  m_EditorClassIdentifier: 
+  dialogueData:
+  - lineText: Now that you are finally able to see, I have something to ask of you...
+    textSoundName: 
+  - lineText: A long time ago, I gave my beloved reliquary pendant to my grandchild.
+      Unfortunately, he never received it...
+    textSoundName: 
+  - lineText: I need your help in this regard. Could you find it and and bring it
+      back? As my las-- ... As a wish of mine, I would like him to receive this gift
+    textSoundName: 

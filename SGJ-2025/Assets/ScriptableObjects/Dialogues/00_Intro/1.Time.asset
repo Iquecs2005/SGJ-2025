@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c301b2c4a27daa45801ad0aba24b12b, type: 3}
+  m_Name: 1.Time
+  m_EditorClassIdentifier: 
+  dialogueData:
+  - lineText: Oh, forgive me, I forgot that you couldn't see in this shallow darkness...
+    textSoundName: 
+  - lineText: Why don't you try snooping around? I think there's a door around here
+      somewhere?!
+    textSoundName: 

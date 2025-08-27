@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class InventoryUI : MonoBehaviour
 {
+    [Header("Inventory Reference")]
     [SerializeField] private GameObject inventoryPanel;
+    [SerializeField] private GameObject inventoryButton;
     [SerializeField] private GameObject itemPanel;
     [SerializeField] private GameObject itemSlotPrefab;
     [SerializeField] private GameObject dragItemPrefab;
@@ -19,6 +22,7 @@ public class InventoryUI : MonoBehaviour
     private GameObject currentDragItem;
     private DragItem dragItemController;
     private int nChild;
+    private bool isInventoryOpen = false;
 
     public void Start()
     {
@@ -35,24 +39,53 @@ public class InventoryUI : MonoBehaviour
         AdjustPanelSize();
     }
 
-    public void TogglePanel() 
+    public void Invetory(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (isInventoryOpen)
+            {
+                Open();
+            }
+            else
+            {
+                Close();
+            }
+        }
+    }
+
+    void Open()
+    {
+        inventoryPanel.SetActive(false);
+        inventoryButton.SetActive(true);
+        isInventoryOpen = false;
+    }
+
+    void Close()
+    {
+        inventoryPanel.SetActive(true);
+        inventoryButton.SetActive(false);
+        isInventoryOpen = true;
+    }
+
+    public void TogglePanel()
     {
         inventoryPanel.SetActive(!inventoryPanel.activeInHierarchy);
     }
 
-    private void AdjustPanelSize() 
+    private void AdjustPanelSize()
     {
         inventoryItems = playerInventorySystem.GetItems();
 
         float sizePerItem = gridLayout.cellSize.x + gridLayout.spacing.x;
         float totalSize = sizePerItem * Mathf.Max(inventoryItems.Count, 1) + gridLayout.padding.left;
 
-        panelRectTransform.sizeDelta =  new Vector2(totalSize, panelRectTransform.sizeDelta.y);
+        panelRectTransform.sizeDelta = new Vector2(totalSize, panelRectTransform.sizeDelta.y);
 
         AdjustChildren();
     }
 
-    private void AdjustChildren() 
+    private void AdjustChildren()
     {
         int nItems = inventoryItems.Count;
 
@@ -78,7 +111,7 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    public void OnItemSlotClick(int slotId) 
+    public void OnItemSlotClick(int slotId)
     {
         InventoryAssets currentItem = inventoryItems[slotId];
 

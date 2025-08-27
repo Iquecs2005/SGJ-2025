@@ -345,6 +345,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5527765819366024467, guid: 17f82db464b831144994cb62516c396d, type: 3}
   m_PrefabInstance: {fileID: 283667137}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &603394337 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6593038551034464372, guid: f2e04f3979868d74aa4f183947b6229e, type: 3}
+  m_PrefabInstance: {fileID: 1710760412}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &668287302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -802,6 +807,76 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3219124013717118997, guid: 95dd07efcfbb46740a738947847a6472, type: 3}
   m_PrefabInstance: {fileID: 668287302}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1389004081 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2163910474468459187, guid: f2e04f3979868d74aa4f183947b6229e, type: 3}
+  m_PrefabInstance: {fileID: 1710760412}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1389004083 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1172261845423212625, guid: f2e04f3979868d74aa4f183947b6229e, type: 3}
+  m_PrefabInstance: {fileID: 1710760412}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389004081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2874a5cbb8b77144d916db8f236c444e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1389004084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389004081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 05dba4a1b405dd1419d2709c72a4e45d, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 58419982-6a33-464c-a3cb-dff16a8789f2
+    m_ActionName: Normal/MouseClick[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 92cfcc29-d0b4-4f05-9517-d71af897896f
+    m_ActionName: Normal/Pause[/Keyboard/p]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1389004083}
+        m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
+        m_MethodName: Invetory
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 77979074-13a7-4f8c-93f0-08e9e730d069
+    m_ActionName: Normal/Inventory[/Keyboard/q]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Normal
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1001 &1710760412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -810,6 +885,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1172261845423212625, guid: f2e04f3979868d74aa4f183947b6229e, type: 3}
+      propertyPath: inventoryButton
+      value: 
+      objectReference: {fileID: 603394337}
+    - target: {fileID: 1172261845423212625, guid: f2e04f3979868d74aa4f183947b6229e, type: 3}
+      propertyPath: inventoryHolderPanel
+      value: 
+      objectReference: {fileID: 603394337}
     - target: {fileID: 1591272892789496004, guid: f2e04f3979868d74aa4f183947b6229e, type: 3}
       propertyPath: m_Name
       value: InventoryCanvas
@@ -909,7 +992,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2163910474468459187, guid: f2e04f3979868d74aa4f183947b6229e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1389004084}
   m_SourcePrefab: {fileID: 100100000, guid: f2e04f3979868d74aa4f183947b6229e, type: 3}
 --- !u!114 &1756916858 stripped
 MonoBehaviour:

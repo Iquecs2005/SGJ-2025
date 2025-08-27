@@ -11,4 +11,14 @@ public class InteractableObject : MonoBehaviour
     {
         OnInteraction.Invoke();
     }
+
+    public void YesInterect()
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void NoInterect()
+    {
+        Time.timeScale = 1f;
+    }
 }

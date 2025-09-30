@@ -9,8 +9,6 @@ public class SFXManager : MonoBehaviour
     private static SFXLibrary sfxLibrary;
     private static AudioSource sfxSource;
 
-    private GameObject audioListenerObject;
-
     [SerializeField] private GameObject sfxSourceObj;
 
     public void Initialization() 
@@ -21,10 +19,12 @@ public class SFXManager : MonoBehaviour
         sfxLibrary.InitializeDictionary();
     }
 
-    //public static void PlaySFX(string sfxName)
-    //{
-    //    PlaySFX(sfxName, audioListenerObject.transform.position, );
-    //}
+    public static GameObject PlaySFX(string sfxName)
+    {
+        GameObject sfxObject = PlaySFX(sfxName, Vector2.zero, Camera.main.transform);
+        sfxObject.GetComponent<AudioSource>().spatialBlend = 0;
+        return sfxObject;
+    }
 
     public static GameObject PlaySFX(string sfxName, Vector2 soundPos, Transform parent = null)
     {
@@ -36,6 +36,7 @@ public class SFXManager : MonoBehaviour
         if (randomClip == null) return null;
 
         GameObject SourceObj;
+
         SourceObj = Instantiate(instance.sfxSourceObj, soundPos, Quaternion.identity, parent);
         AudioSource audioSource = SourceObj.GetComponent<AudioSource>();
 

@@ -244,6 +244,18 @@ MonoBehaviour:
       volume: 1
       minPitchShift: 0.95
       maxPitchShift: 1.05
+  - SFXName: ZiperAbrindo
+    SFXVariations:
+    - audioClip: {fileID: 8300000, guid: b58dcbaaee298c1479942cfb4f1b30df, type: 3}
+      volume: 1
+      minPitchShift: 0.95
+      maxPitchShift: 1.05
+  - SFXName: ZiperFechando
+    SFXVariations:
+    - audioClip: {fileID: 8300000, guid: 211a1d65485411646b6f748ba56374e1, type: 3}
+      volume: 1
+      minPitchShift: 0.95
+      maxPitchShift: 1.05
 --- !u!1 &2505871194916236169
 GameObject:
   m_ObjectHideFlags: 0

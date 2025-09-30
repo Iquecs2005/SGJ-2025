@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private GameObject itemSlotPrefab;
     [SerializeField] private GameObject dragItemPrefab;
 
+    [Header("Events")]
+    [SerializeField] private UnityEvent OnOpen;
+    [SerializeField] private UnityEvent OnClose;
+
     private List<InventoryAssets> inventoryItems;
     private List<GameObject> itemSlots;
     private RectTransform panelRectTransform;
@@ -22,7 +27,6 @@ public class InventoryUI : MonoBehaviour
     private GameObject currentDragItem;
     private DragItem dragItemController;
     private int nChild;
-    private bool isInventoryOpen = false;
 
     public void Start()
     {
@@ -43,34 +47,33 @@ public class InventoryUI : MonoBehaviour
     {
         if (context.performed)
         {
-            if (isInventoryOpen)
-            {
-                Open();
-            }
-            else
-            {
-                Close();
-            }
+            TogglePanel();
         }
     }
 
-    void Open()
-    {
-        inventoryPanel.SetActive(false);
-        inventoryButton.SetActive(true);
-        isInventoryOpen = false;
-    }
-
-    void Close()
+    public void Open()
     {
         inventoryPanel.SetActive(true);
         inventoryButton.SetActive(false);
-        isInventoryOpen = true;
+
+        OnOpen.Invoke();
+    }
+
+    public void Close()
+    {
+        inventoryPanel.SetActive(false);
+        inventoryButton.SetActive(true);
+
+        OnClose.Invoke();
     }
 
     public void TogglePanel()
     {
-        inventoryPanel.SetActive(!inventoryPanel.activeInHierarchy);
+        //inventoryPanel.SetActive(!inventoryPanel.activeInHierarchy);
+        if (!inventoryPanel.activeInHierarchy)
+            Open();
+        else
+            Close();
     }
 
     private void AdjustPanelSize()

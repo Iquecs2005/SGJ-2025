@@ -16,10 +16,8 @@ public class MusicManager : MonoBehaviour
     private static bool fadingOut;
 
     private static float timeElapsed = 0;
-    [SerializeField]
-    private float fadeInTime = 1;
-    [SerializeField]
-    private float fadeOutTime = 1;
+    private static float currentFadeInTime = 1;
+    private static float currentFadeOutTime = 1;
 
     public void Initialization()
     {
@@ -81,13 +79,14 @@ public class MusicManager : MonoBehaviour
         SetAudioSource(musicLibrary.GetMusicClip(musicName), true);
     }
 
-    public static void FadeInMusic(string musicName) 
+    public static void FadeInMusic(string musicName, float desiredFadeIn = 1, float desiredFadeOut = 1) 
     {
         if (currentMusic != null && musicName == currentMusic.musicName) return;
 
         desiredFadeInMusic = musicLibrary.GetMusicClip(musicName);
 
         fading = true;
+        currentFadeInTime = desiredFadeIn;
 
         if (currentMusic == null) 
         {
@@ -103,7 +102,11 @@ public class MusicManager : MonoBehaviour
                 timeElapsed = 0;
                 currentMusic.volume = musicSource.volume;
             }
-            fadingOut = true;
+            else if (!fadingOut) 
+            {
+                fadingOut = true;
+                currentFadeOutTime = desiredFadeOut;
+            }
         }
     }
 
@@ -129,7 +132,7 @@ public class MusicManager : MonoBehaviour
     private void FadeOutStep()
     {
         timeElapsed += Time.deltaTime;
-        float ratio = timeElapsed / fadeOutTime;
+        float ratio = timeElapsed / currentFadeOutTime;
 
         musicSource.volume = Mathf.Lerp(currentMusic.volume, 0, ratio);
 
@@ -151,7 +154,7 @@ public class MusicManager : MonoBehaviour
     private void FadeInStep() 
     {
         timeElapsed += Time.deltaTime;
-        float ratio = timeElapsed / fadeInTime;
+        float ratio = timeElapsed / currentFadeInTime;
 
         musicSource.volume = Mathf.Lerp(0, desiredFadeInMusic.volume, ratio);
 

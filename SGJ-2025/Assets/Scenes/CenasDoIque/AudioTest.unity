@@ -1353,6 +1353,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 824156708}
   m_CullTransparentMesh: 1
+--- !u!114 &883186592 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7529754462565748011, guid: 174b1e9dc99774e4b95665eba4f6eecb, type: 3}
+  m_PrefabInstance: {fileID: 244167422}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c360c81f7af18b4c800fcc8db37720d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1092695488
 GameObject:
   m_ObjectHideFlags: 0
@@ -1499,7 +1510,7 @@ GameObject:
   - component: {fileID: 1106173075}
   - component: {fileID: 1106173074}
   - component: {fileID: 1106173073}
-  - component: {fileID: 1106173072}
+  - component: {fileID: 1106173076}
   m_Layer: 0
   m_Name: Button (1)
   m_TagString: Untagged
@@ -1527,19 +1538,6 @@ RectTransform:
   m_AnchoredPosition: {x: 253.1, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1106173072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1106173070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d851b79ea8dcd244bbbb9babcb63d2ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioName: Test1
 --- !u!114 &1106173073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1584,9 +1582,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1106173072}
-        m_TargetAssemblyTypeName: PlayMusicScript, Assembly-CSharp
-        m_MethodName: PlayAudio
+      - m_Target: {fileID: 1106173076}
+        m_TargetAssemblyTypeName: MusicPlayer, Assembly-CSharp
+        m_MethodName: PlayMusic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1634,6 +1632,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106173070}
   m_CullTransparentMesh: 1
+--- !u!114 &1106173076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106173070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a530072a03fc7184c98bc8ef0014324a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMusicName: MainTheme
+  fadeInTime: 0
+  fadeOutTime: 0
+  playOnStart: 1
+  shouldFadeIn: 0
 --- !u!1 &1116333264
 GameObject:
   m_ObjectHideFlags: 0
@@ -2330,7 +2345,7 @@ GameObject:
   - component: {fileID: 1553533813}
   - component: {fileID: 1553533812}
   - component: {fileID: 1553533811}
-  - component: {fileID: 1553533810}
+  - component: {fileID: 1553533814}
   m_Layer: 0
   m_Name: Button (2)
   m_TagString: Untagged
@@ -2358,19 +2373,6 @@ RectTransform:
   m_AnchoredPosition: {x: 253.1, y: -120.1}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1553533810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1553533808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d851b79ea8dcd244bbbb9babcb63d2ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioName: Test2
 --- !u!114 &1553533811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2415,9 +2417,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1553533810}
-        m_TargetAssemblyTypeName: PlayMusicScript, Assembly-CSharp
-        m_MethodName: PlayAudio
+      - m_Target: {fileID: 1553533814}
+        m_TargetAssemblyTypeName: MusicPlayer, Assembly-CSharp
+        m_MethodName: PlayMusic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2465,6 +2467,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553533808}
   m_CullTransparentMesh: 1
+--- !u!114 &1553533814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553533808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a530072a03fc7184c98bc8ef0014324a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMusicName: GameTheme
+  fadeInTime: 0
+  fadeOutTime: 0
+  playOnStart: 0
+  shouldFadeIn: 0
 --- !u!1 &1652277966
 GameObject:
   m_ObjectHideFlags: 0
@@ -3055,7 +3074,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 883186592}
         m_TargetAssemblyTypeName: MusicManager, Assembly-CSharp
         m_MethodName: StartFadeOut
         m_Mode: 1

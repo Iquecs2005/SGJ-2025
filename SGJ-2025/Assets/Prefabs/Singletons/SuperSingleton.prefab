@@ -46,8 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c360c81f7af18b4c800fcc8db37720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeInTime: 5
-  fadeOutTime: 5
 --- !u!114 &785053273687149826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,6 +64,12 @@ MonoBehaviour:
     volume: 0.5
   - musicName: Test2
     musicClip: {fileID: 8300000, guid: b4968f0475141124cbc7b316d42037e2, type: 3}
+    volume: 0.5
+  - musicName: MainTheme
+    musicClip: {fileID: 8300000, guid: a02db31fbeec4b949b6ac08825e28fe5, type: 3}
+    volume: 0.5
+  - musicName: GameTheme
+    musicClip: {fileID: 8300000, guid: 66ace2b473e90c84fbdda86f3850e0d0, type: 3}
     volume: 0.5
 --- !u!82 &1436670181815929131
 AudioSource:
